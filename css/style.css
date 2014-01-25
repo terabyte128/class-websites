@@ -1,0 +1,101 @@
+/* 
+    Document   : style
+    Created on : Jan 18, 2014, 10:52:21 PM
+    Author     : Sam
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    font-family: 'Cabin', sans-serif;
+}
+
+.header {
+    background: #9c9c9c;
+    padding: 10px 20px 10px 20px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+}
+
+.subheader {
+    background: #7D7D7E;
+    padding: 5px 20px 1px 20px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Cabin', sans-serif;
+}
+
+p {
+    font-family: 'Cabin', sans-serif;
+}
+
+.container {
+    background-color: #dbdbdb;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    /*border: 1px solid #9c9c9c;*/
+}
+
+.page-content {
+}
+
+.wrapper {
+    margin: 10px 10px 10px 10px;
+}
+
+.navbar {
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 0px;
+    border: 0px;
+}
+
+.card {
+
+    box-shadow: 5px 5px 5px #bdbdbd;
+    -moz-box-shadow: 5px 5px 5px #bdbdbd;
+
+    background-color: #ffffff;
+    padding: 10px 20px 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        margin: 0px;
+    }
+
+    .container {
+        border-radius: 0px;
+        -moz-border-radius: 0px;
+    }
+
+    .header {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        -moz-border-top-left-radius: 0px;
+        -moz-border-top-right-radius: 0px;
+    }
+
+    body {
+        background-color: #dbdbdb;
+    }
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Cabin', sans-serif;
+}

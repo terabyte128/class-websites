@@ -1,0 +1,4 @@
+<?php
+
+include 'assignments.php';
+?>
