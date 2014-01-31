@@ -8,7 +8,6 @@ $password = $_POST['password'];
 
 
 # pull in the constants file and the file that creates the database object
-require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/constants.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/db-connect.php";
 
 try {
@@ -43,6 +42,7 @@ if (key_exists('username', $authResponse)) {
     $_SESSION['username'] = $username;
     $_SESSION['firstName'] = $authResponse['first_name'];
     $_SESSION['lastName'] = $authResponse['last_name'];
+    $_SESSION['teacherID'] = $authResponse['uid'];
     
     echo '200 Success';
 
@@ -50,6 +50,7 @@ if (key_exists('username', $authResponse)) {
     unset($_SESSION['username']);
     unset($_SESSION['firstName']);
     unset($_SESSION['lastName']);
+    unset($_SESSION['teacherID']);
     
     echo "Your username or password are incorrect, please try again.";
 }

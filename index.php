@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['firstName'])) {
+    $isLoggedIn = true;
+} else {
+    $isLoggedIn = false;
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,26 +21,31 @@
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
                 <div class="page-content">
                     <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/messages.php'; ?>
-                    <br />
                     <div id="students" class='card'>
                         <p class='title'><strong>For students:</strong></p>
-                        <form role="form">
+                        <form role="form" class='form-inline' onsubmit="search($('#teacherSearch').val());
+                                return false;">
+                            <p>Search for your teacher by name:</p>
                             <div class="form-group">
-                                <label for="teacherSearch">Search for your teacher by last name to find information about your class</label>
-                                <input id="teacherSearch" class="form-control" placeholder="last name">
+                                <label for="teacherSearch" class='sr-only'>Search for your teacher by name:</label>
+                                <input id="teacherSearch" class="form-control" placeholder="" value="<?php echo $query; ?>">
                             </div>
-                            <button type="submit" class="btn btn-default">Search</button>
+                            <div class='form-group'>
+                                <button type="submit" class="btn btn-default">Search</button>
+                            </div>
                         </form>
+                        <br />
                     </div>
-                    <br />
+                    <?php if(!$isLoggedIn) { ?>
                     <div id="teachers" class='card'>
                         <p class='title'><strong>For teachers:</strong></p>
                         <a href="#" onclick="$('#loginModal').modal('show');">Login</a>
                         <br />
-                        <a href="/create.php">Create an account</a>
+                        <a href="/create">Create an account</a>
                         <br />
-                        <a href="#">What is <strong>transfusion</strong>?</a>
+                        <a href="/what">What is <strong>transfusion</strong>?</a>
                     </div>
+                    <?php } ?>
                 </div>
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
             </div>
@@ -59,6 +75,15 @@
             </div><!-- /.modal-dialog -->
         </div>
         <script type="text/javascript">
+                            function search(query) {
+                                if(query !== "") {
+                                    hideMessage();
+                                    window.location = "/search/" + query;
+                                } else {
+                                    showMessage("Please enter a query.", "warning");
+                                }
+                            }
+
                             $(function() {
                                 $("#loginModal").modal({
                                     show: false

@@ -7,6 +7,8 @@ $column = $_POST['name'];
 $value = $_POST['value'];
 $sessionVar = $_POST['pk'];
 
+$value = strip_tags($value);
+
 # pull in the constants file and the file that creates the database object
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/constants.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/db-connect.php";

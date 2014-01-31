@@ -10,7 +10,6 @@
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
                 <div class="page-content">
                     <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/messages.php'; ?>
-                    <br />
                     <div class='card'>
                         <p class='title'><strong>Create a teacher account</strong></p>
                         <form role="form" onsubmit='createAccount(); return false;'>
@@ -104,7 +103,7 @@
                                                 'email': $("#emailAddress").val()
                                             },
                                             'success': function(text) {
-                                                showMessage(text, "success");
+                                                loadPageWithMessage("/index.php", text, "success");
                                             }
                                         });
                                     }

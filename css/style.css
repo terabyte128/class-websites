@@ -11,7 +11,7 @@ root {
 }
 
 body {
-    font-family: 'Cabin', sans-serif;
+    /*font-family: 'Cabin', sans-serif;*/
 }
 
 .header {
@@ -26,18 +26,18 @@ body {
 }
 
 .subheader {
-    background: #7D7D7E;
-    padding: 5px 20px 1px 20px;
+    background: #666666;
+    padding: 10px 20px 1px 20px;
     margin-left: -15px;
     margin-right: -15px;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Cabin', sans-serif;
+    /*font-family: 'Cabin', sans-serif;*/
 }
 
 p {
-    font-family: 'Cabin', sans-serif;
+    /*font-family: 'Cabin', sans-serif;*/
 }
 
 .container {
@@ -48,6 +48,7 @@ p {
 }
 
 .page-content {
+    padding-top: 5px;
 }
 
 .wrapper {
@@ -59,6 +60,8 @@ p {
     margin-right: -15px;
     border-radius: 0px;
     border: 0px;
+    margin-bottom: 0px;
+    position: inherit;
 }
 
 .card {
@@ -69,7 +72,6 @@ p {
     background-color: #ffffff;
     padding: 10px 20px 10px 20px;
     margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
@@ -97,5 +99,5 @@ p {
 .title {
     font-size: 32px;
     font-weight: bold;
-    font-family: 'Cabin', sans-serif;
+    /*font-family: 'Cabin', sans-serif;*/
 }

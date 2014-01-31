@@ -3,3 +3,6 @@ RewriteRule ^teacher/([A-za-z0-9-_]+)/?$ teacherhome.php?teacher=$1 [NC,L] #rewr
 RewriteRule ^teacher/([A-za-z0-9-_]+)/class/([a-zA-Z0-9-_]+)/?$ classhome.php?teacher=$1&class=$2 [NC,L] #rewrite teacher/[name]/class/[classname] to the class homepage
 RewriteRule ^schedule/([a-zA-Z0-9-_]+)/?$ schedule.php?classes=$1 [NC,L] #rewrite /schedule/[class ids] to the schedule home
 RewriteRule ^preferences/?$ preferences.php
+RewriteRule ^create/?$ create.php
+RewriteRule ^what/?$ what.php
+RewriteRule ^search/([a-zA-Z0-9-_\s]+)/?$ teachersearch.php?query=$1 [NC,L] #rewrite /search/[class ids] to search

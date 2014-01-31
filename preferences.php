@@ -60,50 +60,50 @@ try {
             </div>
         </div>
         <script type="text/javascript">
-                                        $(function() {
-                                            // allow text to be editable, update database dynamically
-                                            $(".editable").editable({
-                                                pk: '<?php echo $_SESSION["username"]; ?>',
-                                                url: 'ajax/update-preferences.php',
-                                                success: function(response) {
-                                                    if (response !== "200 Success") {
-                                                        showMessage(response, "danger");
-                                                    }
-                                                }
-                                            });
+        $(function() {
+            // allow text to be editable, update database dynamically
+            $(".editable").editable({
+                pk: '<?php echo $_SESSION["username"]; ?>',
+                url: 'ajax/update-preferences.php',
+                success: function(response) {
+                    if (response !== "200 Success") {
+                        showMessage(response, "danger");
+                    }
+                }
+            });
 
-                                            //check if true/false is true; update checkbox accordingly
-                                            if (<?php echo $response['show_email']; ?> === 1) {
-                                                $("#publicEmail").attr("checked", "true");
-                                                checked = true;
-                                            } else {
-                                                checked = false;
-                                            }
-                                        });
+            //check if true/false is true; update checkbox accordingly
+            if (<?php echo $response['show_email']; ?> === 1) {
+                $("#publicEmail").attr("checked", "true");
+                checked = true;
+            } else {
+                checked = false;
+            }
+        });
 
-                                        //track if the checkbox is checked
-                                        var checked;
+        //track if the checkbox is checked
+        var checked;
 
-                                        //update database from checkbox
-                                        function updateCheckbox(column) {
-                                            checked = !checked;
-                                            $("#publicEmailSaving").fadeIn(800);
-                                            $.ajax({
-                                                type: "POST",
-                                                url: "ajax/update-preferences.php",
-                                                data: {
-                                                    'pk': column,
-                                                    'name': column,
-                                                    'value': checked ? 1 : 0
-                                                },
-                                                success: function(response) {
-                                                    if (response !== "200 Success") {
-                                                        showMessage(response, "danger");
-                                                    }
-                                                    $("#publicEmailSaving").fadeOut(800);
-                                                }
-                                            });
-                                        }
+        //update database from checkbox
+        function updateCheckbox(column) {
+            checked = !checked;
+            $("#publicEmailSaving").fadeIn(800);
+            $.ajax({
+                type: "POST",
+                url: "ajax/update-preferences.php",
+                data: {
+                    'pk': column,
+                    'name': column,
+                    'value': checked ? 1 : 0
+                },
+                success: function(response) {
+                    if (response !== "200 Success") {
+                        showMessage(response, "danger");
+                    }
+                    $("#publicEmailSaving").fadeOut(800);
+                }
+            });
+        }
         </script>
     </body>
 </html>

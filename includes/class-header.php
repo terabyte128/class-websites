@@ -7,7 +7,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><?php echo $_GET['teacher'] . " > " . $_GET['class']; ?></a>
+            <a class="navbar-brand" href="/teacher/<?php echo $_GET['teacher']; ?>">
+                    <?php echo $response['first_name'] . " " . $response['last_name']; ?>
+                > 
+                <?php echo $_GET['class']; ?>
+            </a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
