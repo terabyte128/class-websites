@@ -14,6 +14,9 @@
             <ul class="nav navbar-nav">
                 <li id="preferencePane"><a href="/preferences">Preferences</a></li>
             </ul>
+            <ul class="nav navbar-nav">
+                <li id="addClassPane"><a href="/teacher/<?php echo $usernameFromGet; ?>/add">Add Class</a></li>
+            </ul>
             <?php } ?>
             
         </div>

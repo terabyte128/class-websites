@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav">
                 <li id="homeTab"><a href="#home">Home</a></li>
                 <li id="assignmentsTab"><a href="#assignments">Assignments</a></li>
-                <li id="filesTab"><a href="#files">Files</a></li>
+                <!--<li id="filesTab"><a href="#files">Files</a></li>-->
                 <li id="calendarTab"><a href="#calendar">Calendar</a></li>
             </ul>
         </div>
