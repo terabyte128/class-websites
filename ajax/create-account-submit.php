@@ -38,7 +38,7 @@ try {
     $message = $e->getMessage();
 
     if (strpos($message, "Duplicate entry") !== false) {
-        echo "That username has been taken! If you believe this is in error, please <a href='mailto:sam@ingrahamrobotics.org'>contact Sam</a> and we'll get it sorted out.";
+        echo "That username has been taken! Please try again.";
     } else {
         echo $message;
     }
