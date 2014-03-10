@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
 <!-- jquery -->
-<script type="text/javascript" src="/includes/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
 
 <!-- bootstrap -->
 <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
@@ -15,8 +15,8 @@
 <script type="text/javascript" src="/includes/message-control.js"></script>
 
 <!-- js stuff to run on page load -->
-<script type="text/javascript" src="/includes/typeahead.js"></script>
-<script type="text/javascript" src="/includes/message-control.js"></script>
+<script type="text/javascript" src="/js/typeahead.js"></script>
+<script type="text/javascript" src="/js/message-control.js"></script>
 
 <!-- bootstrap editable -->
 <script type="text/javascript" src="/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
@@ -26,9 +26,5 @@
 <link rel="stylesheet" href="/css/style.css" type='text/css' />
 <link rel="stylesheet" href="/bootstrap3-editable/css/bootstrap-editable.css" />
 
-<!--<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
-<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css">
--->
+<script type="text/javascript" src="/js/fullcalendar.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/fullcalendar.css">
