@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!-- declare character encoding -->
 <meta charset="UTF-8">
 
@@ -8,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
 <!-- jquery -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="/includes/jquery-1.9.0.min.js"></script>
 
 <!-- bootstrap -->
 <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
@@ -27,5 +25,10 @@
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type='text/css' />
 <link rel="stylesheet" href="/css/style.css" type='text/css' />
 <link rel="stylesheet" href="/bootstrap3-editable/css/bootstrap-editable.css" />
-<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+<!--<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css">
+-->

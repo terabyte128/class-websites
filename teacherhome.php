@@ -4,8 +4,6 @@
 <html>
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css">
         <title><?php echo $response['first_name'] . " " . $response['last_name'] . " - transfusion" ?></title>
     </head>
     <body>

@@ -7,12 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><?php echo $response['first_name'] . " " . $response['last_name'];?></a>
+            <a class="navbar-brand" href="/teacher/<?php echo $usernameFromGet; ?>"><?php echo $response['first_name'] . " " . $response['last_name'];?></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <?php if($isTeacherPage && $isLoggedIn) { ?>
             <ul class="nav navbar-nav">
-                <li id="preferencePane"><a href="/preferences">Preferences</a></li>
+                <li id="preferencePane"><a href="/teacher/<?php echo $usernameFromGet; ?>/preferences">Preferences</a></li>
             </ul>
             <ul class="nav navbar-nav">
                 <li id="addClassPane"><a href="/teacher/<?php echo $usernameFromGet; ?>/add">Add Class</a></li>

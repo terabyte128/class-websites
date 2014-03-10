@@ -28,7 +28,7 @@ if (isset($_SESSION['firstName'])) {
                             <p>Search for your teacher by name:</p>
                             <div class="form-group">
                                 <label for="teacherSearch" class='sr-only'>Search for your teacher by name:</label>
-                                <input id="teacherSearch" class="form-control" placeholder="" value="<?php echo $query; ?>">
+                                <input id="teacherSearch" class="form-control" placeholder="" value="<?php if(isset($query)) echo $query; ?>">
                             </div>
                             <div class='form-group'>
                                 <button type="submit" class="btn btn-default">Search</button>

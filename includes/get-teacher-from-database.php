@@ -29,5 +29,6 @@ if (isset($_SESSION['username'])) {
     }
 } else {
     $isLoggedIn = false;
-}s
+    $isTeacherPage = false;
+}
 ?>
