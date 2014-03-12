@@ -10,15 +10,14 @@
             <a class="navbar-brand" href="/teacher/<?php echo $_GET['teacher']; ?>">
                     <?php echo $response['first_name'] . " " . $response['last_name']; ?>
                 > 
-                <?php echo $_GET['class']; ?>
+                <?php echo $classData['class_name']; ?>
             </a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li id="homeTab"><a href="#home">Home</a></li>
-                <li id="assignmentsTab"><a href="#assignments">Assignments</a></li>
-                <!--<li id="filesTab"><a href="#files">Files</a></li>-->
-                <li id="calendarTab"><a href="#calendar">Calendar</a></li>
+                <li id="homeTab"><a href="/teacher/<?php echo $_GET['teacher']; ?>/class/<?php echo $_GET['class']; ?>">Home</a></li>
+                <li id="assignmentsTab"><a href="/teacher/<?php echo $_GET['teacher']; ?>/class/<?php echo $_GET['class']; ?>/assignments">Assignments</a></li>
+                <li id="calendarTab"><a href="/teacher/<?php echo $_GET['teacher']; ?>/class/<?php echo $_GET['class']; ?>/calendar">Calendar</a></li>
             </ul>
         </div>
     </nav>

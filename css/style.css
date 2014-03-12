@@ -101,3 +101,7 @@ p {
     font-weight: bold;
     /*font-family: 'Cabin', sans-serif;*/
 }
+
+form {
+    max-width: 600px;
+}

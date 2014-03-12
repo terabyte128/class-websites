@@ -1,4 +1,8 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/get-teacher-from-database.php'; ?>
+<?php if(!isset($_SESSION['username'])) {
+    header('location: /');
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +54,7 @@
                                                 pk: '<?php echo $_SESSION["username"]; ?>',
                                                 url: '/ajax/update-preferences.php',
                                                 success: function(response) {
-                                                    if (response !== "200 Success") {
+                                                    if (response.indexOf("200 Success") === -1) {
                                                         showMessage(response, "danger");
                                                     }
                                                 }
@@ -81,7 +85,7 @@
                                                     'value': checked ? 1 : 0
                                                 },
                                                 success: function(response) {
-                                                    if (response !== "200 Success") {
+                                                    if (response.indexOf("200 Success") === -1) {
                                                         showMessage(response, "danger");
                                                     }
                                                     $("#publicEmailSaving").fadeOut(800);

@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/check-session.php";
 
 # get a database entry and the new value of it
 $column = $_POST['name'];

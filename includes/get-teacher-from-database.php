@@ -1,6 +1,7 @@
 <?php
-session_start();
 
+# make sure they're logged in
+session_start();
 # get the teacher username
 $usernameFromGet = $_GET['teacher'];
 

@@ -1,9 +1,10 @@
 RewriteEngine On
 RewriteRule ^teacher/([A-za-z0-9-_]+)/?$ teacherhome.php?teacher=$1 [NC,L] #rewrite /teacher/[name] to their homepage
-RewriteRule ^teacher/([A-za-z0-9-_]+)/class/([a-zA-Z0-9-_]+)/?$ classhome.php?teacher=$1&class=$2 [NC,L] #rewrite teacher/[name]/class/[classname] to the class homepage
+RewriteRule ^teacher/([A-za-z0-9-_]+)/class/([a-zA-Z0-9-_]+)/?$ class.php?teacher=$1&class=$2 [NC,L] #rewrite teacher/[name]/class/[classname] to the class homepage
 RewriteRule ^teacher/([a-zA-Z0-9-_]+)/preferences/?$ preferences.php?teacher=$1 [NC,L]
 RewriteRule ^schedule/([a-zA-Z0-9-_]+)/?$ schedule.php?classes=$1 [NC,L] #rewrite /schedule/[class ids] to the schedule home
 RewriteRule ^create/?$ create.php [NC,L]
 RewriteRule ^what/?$ what.php [NC,L]
 RewriteRule ^teacher/([A-za-z0-9-_]+)/add/?$ add-class.php?teacher=$1 [NC,L]
 RewriteRule ^search/([a-zA-Z0-9-_\s]+)/?$ teachersearch.php?query=$1 [NC,L] #rewrite /search/[class ids] to search
+RewriteRule ^teacher/([A-za-z0-9-_]+)/class/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/?$ class.php?teacher=$1&class=$2&page=$3 [NC,L] #rewrite teacher/[name]/class/[classname]/[page] to various class pages

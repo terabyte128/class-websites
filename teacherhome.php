@@ -27,10 +27,10 @@
                             <p style="white-space: pre-wrap;"><?php echo $response['page_content']; ?></p>
                         <?php } else { ?>
                             <p>
-                                <a class='title editable' href='#' data-name='page_title'><?php echo $response['page_title']; ?></a>
+                                <a class='title editable' href='#' data-name='page_title' data-emptytext="Click to edit title"><?php echo $response['page_title']; ?></a>
                             </p>
                             <p>
-                                <a id="pageContent" class='editable' href='#' data-name='page_content' data-type='textarea'><?php echo $response['page_content']; ?></a>
+                                <a id="pageContent" class='editable' href='#' data-name='page_content' data-type='textarea' data-emptytext="Click to edit description"><?php echo $response['page_content']; ?></a>
                             </p>
 
                         <?php } ?>
@@ -50,7 +50,7 @@
                     pk: '<?php echo $_SESSION["username"]; ?>',
                     url: '/ajax/update-preferences.php',
                     success: function(response) {
-                        if (response !== "200 Success") {
+                        if (response.indexOf("200 Success") === -1) {
                             showMessage(response, "danger");
                         }
                     }

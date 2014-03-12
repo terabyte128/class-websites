@@ -33,7 +33,7 @@ try {
     die("Unable to access database.");
 }
 
-if (key_exists('username', $authResponse)) {
+if ($authenticate->rowCount() > 0) {
     # Login success
     # Regenerate the session ID to avoid session fixation
     session_regenerate_id();
