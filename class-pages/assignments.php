@@ -1,6 +1,6 @@
 <div class="card">
     <p class="title">Assignments 
-        <?php if ($isTeacherPage) { ?>
+        <?php if ($isTeacherPage) { ?>&nbsp;
             <button onclick="$('#addAssignment').modal('show');" class="btn btn-default">Add new</button>
         <?php } ?>
     </p>
@@ -13,17 +13,22 @@
                 <h4 class="modal-title" id="addTitle">Add New Assignment</h4>
             </div>
             <div class="modal-body">
+                <!-- name, value, category, due date -->
                 <form role="form" id="loginForm" onsubmit="addClass();
-                                return false;">
+                return false;">
                     <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" class="form-control" required>
-                    </div>      
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" class="form-control" required>
+                        <label for="assignName">Assignment Name:</label>
+                        <input type="text" id="assignName" class="form-control" required>
                     </div>  
-                    <button type="submit" id="loginButton" class="btn btn-default btn-success">Login</button>
+                    <div class="form-group">
+                        <label for="assignCategory">Category:</label>
+                        <input type="text" id="assignCategory" class="form-control" required>
+                    </div>   
+                    <div class="form-group">
+                        <label for="assignDescription">Description:</label>
+                        <textarea id="assignDescription" class="form-control"></textarea>
+                    </div>  
+                    <button type="submit" id="createButton" class="btn btn-default btn-success">Create</button>
                 </form>
             </div>
         </div><!-- /.modal-content -->
@@ -31,5 +36,9 @@
 </div>
 
 <script type="text/javascript">
+            var categories = ["Homework", "Classwork", "Test", "Lab Report"];
 
+            $("#assignCategory").typeahead({
+                local: categories
+            });
 </script>
