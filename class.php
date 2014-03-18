@@ -1,6 +1,6 @@
 <?php
 #assume homepage unless something else is set
-if (isset($_POST['page'])) {
+if (isset($_GET['page'])) {
     $page = $_GET['page'];
 } else {
     $page = "home";
@@ -27,10 +27,13 @@ $classURL = $_GET['class'];
                 <div class="page-content">
                     <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/messages.php'; ?>                    
                     <!-- main content goes here -->
-                    <div class="card">
-                        <p class="title"><?php echo $classData['class_name']; ?></p>
-                        <p style="white-space: pre-wrap;"><?php echo $classData['class_description']; ?></p>
-                    </div>
+                    <?php
+                    if (in_array($page, array("home", "assignments", "calendar"))) {
+                        include $_SERVER['DOCUMENT_ROOT'] . "/class-pages/$page.php";
+                    } else {
+                        echo "Page doesn't exist.";
+                    }
+                    ?>
                     <!-- end main content -->
                 </div>
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
