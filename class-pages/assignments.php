@@ -8,14 +8,13 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
 <div class="card">
     <p class="title">Assignments 
         <?php if ($isTeacherPage) { ?>&nbsp;
-            <button onclick="$('#addAssignment').modal('show');" class="btn btn-success">Add new</button>
+            <button onclick="$('#addAssignment').modal('show');" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+
+            <button onclick="deleteAllAssignments();" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> all</button>
         <?php } ?>
         <button id="toggleExpired" onclick="$('.expired').slideToggle(200);
                     $(this).text() === 'Show expired' ? $(this).text('Hide expired') : $(this).text('Show expired');
                     return false;" class="btn btn-default">Show expired</button>
-                <?php if ($isTeacherPage) { ?>
-            <button onclick="deleteAllAssignments();" class="btn btn-danger">Delete all</button>
-        <?php } ?>
     </p>
 </div>
 
@@ -30,9 +29,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
          }
          ?>
          " id="<?= $assignment['uid'] ?>">
+        <a name="<?= $assignment['uid'] ?>"></a>
         <h4><?= $assignment['title'] ?> &mdash; <?= $assignment['value'] ?> pts  
             <?php if ($isTeacherPage) { ?>
-                <button class="btn btn-warning" style="float: right;" onclick="deleteAssignment($(this).closest('div').attr('id'), true)">Delete</button>
+            <button class="btn btn-warning" style="float: right;" onclick="deleteAssignment($(this).closest('div').attr('id'), true)"><span class="glyphicon glyphicon-minus"></span></button>
             <?php } ?>
         </h4>
 
@@ -110,8 +110,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
                     loadPageWithMessage('./assignments', 'Assignments deleted successfully.', 'success');
                 }
 
-                function deleteAssignment(id, confirm) {
-                    if (confirm) {
+                function deleteAssignment(id, needsConfirm) {
+                    if (needsConfirm) {
                         if (!confirm("Are you sure you want to delete this assignment?")) {
                             return;
                         }
@@ -123,10 +123,12 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
                             'assignmentId': id
                         },
                         success: function(response) {
-                            if (response.indexOf("200") === -1) {
-                                showMessage(response, 'danger');
-                                loadPageWithMessage('./assignments', 'Assignment deleted successfully.', 'success');
-                                return response;
+                            if (needsConfirm) {
+                                if (response.indexOf("200") === -1) {
+                                    showMessage(response, 'danger');
+                                } else {
+                                    loadPageWithMessage('./assignments', 'Assignment deleted successfully.', 'success');
+                                }
                             }
                         }
                     });

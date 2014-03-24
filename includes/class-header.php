@@ -17,6 +17,7 @@
             <ul class="nav navbar-nav">
                 <li id="homeTab"><a href="/teacher/<?php echo $_GET['teacher']; ?>/class/<?php echo $_GET['class']; ?>">Home</a></li>
                 <li id="assignmentsTab"><a href="/teacher/<?php echo $_GET['teacher']; ?>/class/<?php echo $_GET['class']; ?>/assignments">Assignments</a></li>
+                <li id="linksTab"><a href="/teacher/<?php echo $_GET['teacher']; ?>/class/<?php echo $_GET['class']; ?>/links">Links</a></li>
                 <li id="calendarTab"><a href="/teacher/<?php echo $_GET['teacher']; ?>/class/<?php echo $_GET['class']; ?>/calendar">Calendar</a></li>
             </ul>
         </div>

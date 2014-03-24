@@ -34,6 +34,11 @@
                             </p>
 
                         <?php } ?>
+                            
+                        <?php if ($response['show_email'] === "1") { ?>
+                            <hr>
+                            <p>Send an email to this teacher &nbsp;<a href="mailto:<?= $response['email'] ?>"><span class="glyphicon glyphicon-envelope" style="top: 3px; color: rgb(194, 188, 168);"></span></a></p>
+                        <?php } ?>
                     </div>
                     <!-- end main content -->
                 </div>
@@ -42,9 +47,6 @@
         </div>
         <script type="text/javascript">
             $(function() {
-                $("#assignmentsTab").addClass("active");
-                $("#filesTab").removeClass("active");
-                $("#calendarTab").removeClass("active");
                 $(".editable").editable({
                     mode: 'inline',
                     pk: '<?php echo $_SESSION["username"]; ?>',
@@ -55,7 +57,9 @@
                         }
                     }
                 });
+
             });
+
         </script>
     </body>
 </html>

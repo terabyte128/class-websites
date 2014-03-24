@@ -27,7 +27,7 @@ $classURL = $_GET['class'];
                     <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/messages.php'; ?>                    
                     <!-- main content goes here -->
                     <?php
-                    if (in_array($page, array("home", "assignments", "calendar"))) {
+                    if (in_array($page, array("home", "assignments", "calendar", "links"))) {
                         include $_SERVER['DOCUMENT_ROOT'] . "/class-pages/$page.php";
                     } else {
                         echo "Page doesn't exist.";
@@ -50,6 +50,8 @@ $classURL = $_GET['class'];
                     $("#assignmentsTab").addClass("active");
                 } else if (path.indexOf("calendar") !== -1) {
                     $("#calendarTab").addClass("active");
+                } else if (path.indexOf("links") !== -1) {
+                    $("#linksTab").addClass("active");
                 } else {
                     $("#homeTab").addClass("active");
                 }
