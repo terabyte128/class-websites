@@ -8,7 +8,6 @@ if (isset($_GET['page'])) {
 $classURL = $_GET['class'];
 ?>
 
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/get-teacher-from-database.php'; ?>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/get-classes-from-database.php'; ?>
 <?php $classData = $classQuery->fetch(PDO::FETCH_ASSOC); ?>
 
