@@ -55,6 +55,9 @@ if (isset($_SESSION['firstName'])) {
                         </div>
                     <?php } ?>
                 </div>
+                <div class='card'>
+                    <a href='/credits'>Credits</a>
+                </div>
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
             </div>
         </div>

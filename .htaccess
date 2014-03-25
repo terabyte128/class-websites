@@ -11,3 +11,4 @@ RewriteRule ^what/?$ what.php [NC,L]
 RewriteRule ^teacher/([A-za-z0-9-_]+)/add/?$ add-class.php?teacher=$1 [NC,L]
 RewriteRule ^search/([a-zA-Z0-9-_\s]+)/?$ teachersearch.php?query=$1 [NC,L] #rewrite /search/[class ids] to search
 RewriteRule ^teacher/([A-za-z0-9-_]+)/class/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/?$ class.php?teacher=$1&class=$2&page=$3 [NC,L] #rewrite teacher/[name]/class/[classname]/[page] to various class pages
+RewriteRule ^credits/?$ credits.php [NC,L] #rewrite credits page

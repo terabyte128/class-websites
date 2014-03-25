@@ -6,7 +6,7 @@ allows students to create schedules consisting of multiple classes
 <html>
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
-        <title>Transfusion - Home</title>
+        <title>Transfusion - Create Schedule</title>
     </head>
     <body>
         <div class="wrapper">
