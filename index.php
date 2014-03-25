@@ -2,7 +2,6 @@
 /**
  * Homepage
  */
-
 session_start();
 
 if (isset($_SESSION['firstName'])) {
@@ -39,10 +38,8 @@ if (isset($_SESSION['firstName'])) {
                                 <button type="submit" class="btn btn-default">Search</button>
                             </div>
                             <br />
-                            <br />
-                            <a href="/schedule/create">Create a schedule</a>
+                            <p style='margin-top: 10px;'>Or, <a href='/schedule/create'>create a schedule</a>.</p>
                         </form>
-                        <br />
                     </div>
                     <?php if (!$isLoggedIn) { ?>
                         <div id="teachers" class='card'>
