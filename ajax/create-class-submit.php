@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * This creates a new class and inserts it into the class table. Classes are
+ * associated with a teacher_id. Called by /add-class.php via ajax.
+ */
+
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/check-session.php";
 
 $className = $_POST['className'];

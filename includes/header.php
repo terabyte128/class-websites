@@ -1,3 +1,8 @@
+<!--
+The header that appears under the "transfusion" when a teacher is logged in,
+allows for easy navigation to home page or to log out
+-->
+
 <div class="header">
     <div style='margin-bottom: -30px;'>
         <a href="/"><img src="/image/title.png" style="height: 120px;"></a>

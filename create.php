@@ -1,3 +1,7 @@
+<!--
+form for teachers to create an account
+-->
+
 <!DOCTYPE html>
 <html>
     <head>

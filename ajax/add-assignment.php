@@ -1,4 +1,10 @@
 <?php
+/**
+ * This adds an assignment to the assignments table and associates it with a
+ * specific teacher_id and class_id. Called by /class-pages/assignments.php 
+ * via ajax
+ */
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/check-session.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db-connect.php';
 

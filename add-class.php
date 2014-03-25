@@ -1,3 +1,8 @@
+<!--
+Adds a class for a teacher via ajax. Calls /ajax/create-class-submit.php
+-->
+
+
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/get-teacher-from-database.php';
 if (!$isTeacherPage) {

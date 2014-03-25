@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This updates the description of a class by updating the classt table.
+ * Called by /class-pages/home.php via ajax (x-editable).
+ */
+
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/check-session.php";
 
 # get a database entry and the new value of it

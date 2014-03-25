@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Allow students to search for a teacher. Very simple page, calls itself for
+ * query information
+ */
 $query = $_GET['query'];
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/db-connect.php";

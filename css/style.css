@@ -4,6 +4,8 @@
     Author     : Sam
     Description:
         Purpose of the stylesheet follows.
+        Styling for the website, kept in a seperate sheet to eliminate
+code redundancy.
 */
 
 root { 
@@ -11,7 +13,7 @@ root {
 }
 
 body {
-    /*font-family: 'Cabin', sans-serif;*/
+    /*font-family: 'Open Sans', sans-serif;*/
 }
 
 .header {

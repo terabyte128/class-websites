@@ -1,3 +1,6 @@
+<!--
+General information page about what transfusion is and does
+-->
 <?php
 session_start();
 
@@ -39,14 +42,10 @@ if (isset($_SESSION['firstName'])) {
                                 <ul>
                                     <li>General announcements</li>
                                     <li>Links</li>
-                                    <li>Files</li>
                                     <li>Assignments</li>
                                 </ul>
                             <li>Students can submit work via an online dropbox</li>
                             <li>A calendar is automatically generated with all the assignments from a class
-                                <ul>
-                                    <li>Teachers can also add items to this calendar manually</li>
-                                </ul>
                             </li>
                             <li>Schedule Pages: students can select the classes in their schedule and create a link to a page which includes:
                                 <ul>

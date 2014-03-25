@@ -1,3 +1,10 @@
+<!--
+
+This file pulls in a database query and builds a list of links from it
+using PHP within HTML
+
+-->
+    
 <?php
 $classUID = $classData['uid'];
 require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
@@ -6,9 +13,9 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
 <div class="card">
     <p class="title">Links
         <?php if ($isTeacherPage) { ?>&nbsp;
-            <button onclick="$('#addLink').modal('show');" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+            <button onclick="$('#addLink').modal('show');" class="btn btn-success">Add</button>
 
-            <button onclick="deleteAllLinks();" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> all</button>
+            <button onclick="deleteAllLinks();" class="btn btn-danger">Delete all</button>
         <?php } ?>
     </p>
 </div>
@@ -19,7 +26,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
         <a name="<?= $link['uid'] ?>"></a>
         <h4><?= $link['title'] ?> <a target="_blank" href="<?= $link['url'] ?>"><span class="glyphicon glyphicon-link"></span></a>
             <?php if ($isTeacherPage) { ?>
-                <button class="btn btn-warning" style="float: right;<?php if (empty($link['description'])) echo 'margin-top: -6px;' ?>" onclick="deleteLink($(this).closest('div').attr('id'), true)"><span class="glyphicon glyphicon-minus"></span></button>
+                <button class="btn btn-warning" style="float: right;<?php if (empty($link['description'])) echo 'margin-top: -6px;' ?>" onclick="deleteLink($(this).closest('div').attr('id'), true)">Delete</button>
             <?php } ?>
         </h4>
 

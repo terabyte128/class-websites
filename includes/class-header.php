@@ -1,3 +1,8 @@
+<!--
+This is the navigation for the class pages, built using PHP GET queries from
+the URL
+-->
+
 <div>
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">

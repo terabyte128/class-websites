@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * This adds an link to the links table and associates it with a
+ * specific teacher_id and class_id. Called by /class-pages/links.php 
+ * via ajax
+ */
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/check-session.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db-connect.php';
 

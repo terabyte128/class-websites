@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This creates a new teacher account and inserts it into the teacher_login table
+ * Called by /create.php via ajax
+ * 
+ * Passwords are hashed and salted before being inserted into the database
+ * for increased security
+ */
+
 # pull in values from POST data
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];

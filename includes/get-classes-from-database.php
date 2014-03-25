@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Retrieves either a single class or every class from the database based upon
+ * arguments passed through inclusion in other files
+ */
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/get-teacher-from-database.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db-connect.php';
 

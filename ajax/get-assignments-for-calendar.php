@@ -1,18 +1,8 @@
 <?php
 
-/*
- * var events = [{
-  title: 'Test Event',
-  start: "2014-1-21",
-  allDay: true
-  },
-  {
-  title: 'Another Event',
-  start: "2014-1-22",
-  allDay: true
-  }
-
-  ]
+/**
+ * This will return all the assignments for a given class via a JSON array.
+ * Called by /class-pages/calendar.php via ajax.
  */
 
 $classUID = $_POST['classUID'];
@@ -28,6 +18,7 @@ try {
 
 $events = array();
 
+# create and format an array
 while ($value = $assnQuery->fetch(PDO::FETCH_ASSOC)) {
     $event = array();
     $event['title'] = $value['title'];
@@ -37,5 +28,7 @@ while ($value = $assnQuery->fetch(PDO::FETCH_ASSOC)) {
     $event['uid'] = $value['uid'];
     array_push($events, $event);
 }
+
+# return it json-ified
 print_r(json_encode($events));
 ?>

@@ -2,6 +2,10 @@
 <?php if(!isset($_SESSION['username'])) {
     header('location: /');
 }
+
+/**
+ * Allows teachers to update preferences through calls to php files via ajax.
+ */
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +44,9 @@
                                 <br />
                                 <label for="lastName">Last name:</label>
                                 <a class="editable" href="#" id="last_name" data-pk="lastName"><?php echo $_SESSION['lastName']; ?></a>
+                                <br />
+                                <label for="email">Email address:</label>
+                                <a class="editable" href="#" id="email" data-pk="undefined" data-type="email"><?php echo $response['email']; ?></a>
                             </div>
                         </form>
                     </div>

@@ -1,3 +1,7 @@
+<!--
+header scripts, fonts, metas to be run on every page
+-->
+
 <!-- declare character encoding -->
 <meta charset="UTF-8">
 

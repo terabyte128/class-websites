@@ -1,4 +1,7 @@
 <?php
+/**
+ * Homepage
+ */
 
 session_start();
 
@@ -14,6 +17,8 @@ if (isset($_SESSION['firstName'])) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
         <title>Transfusion - Home</title>
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+
     </head>
     <body>
         <div class="wrapper">
@@ -28,23 +33,26 @@ if (isset($_SESSION['firstName'])) {
                             <p>Search for your teacher by name:</p>
                             <div class="form-group">
                                 <label for="teacherSearch" class='sr-only'>Search for your teacher by name:</label>
-                                <input id="teacherSearch" class="form-control" placeholder="" value="<?php if(isset($query)) echo $query; ?>">
+                                <input id="teacherSearch" class="form-control" placeholder="" value="<?php if (isset($query)) echo $query; ?>">
                             </div>
                             <div class='form-group'>
                                 <button type="submit" class="btn btn-default">Search</button>
                             </div>
+                            <br />
+                            <br />
+                            <a href="/schedule/create">Create a schedule</a>
                         </form>
                         <br />
                     </div>
-                    <?php if(!$isLoggedIn) { ?>
-                    <div id="teachers" class='card'>
-                        <p class='title'><strong>For teachers:</strong></p>
-                        <a href="#" onclick="$('#loginModal').modal('show');">Login</a>
-                        <br />
-                        <a href="/create">Create an account</a>
-                        <br />
-                        <a href="/what">What is <strong>transfusion</strong>?</a>
-                    </div>
+                    <?php if (!$isLoggedIn) { ?>
+                        <div id="teachers" class='card'>
+                            <p class='title'><strong>For teachers:</strong></p>
+                            <a href="#" onclick="$('#loginModal').modal('show');">Login</a>
+                            <br />
+                            <a href="/create">Create an account</a>
+                            <br />
+                            <a href="/what">What is <strong>transfusion</strong>?</a>
+                        </div>
                     <?php } ?>
                 </div>
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
@@ -58,7 +66,7 @@ if (isset($_SESSION['firstName'])) {
                         <h4 class="modal-title" id="loginTitle">Teacher Login</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" id="loginForm" onsubmit="login();
+                        <form role="form" id="loginForm" onsubmit="getSalt();
                                 return false;">
                             <div class="form-group">
                                 <label for="username">Username:</label>
@@ -76,7 +84,7 @@ if (isset($_SESSION['firstName'])) {
         </div>
         <script type="text/javascript">
                             function search(query) {
-                                if(query !== "") {
+                                if (query !== "") {
                                     hideMessage();
                                     window.location = "/search/" + query;
                                 } else {
@@ -94,16 +102,42 @@ if (isset($_SESSION['firstName'])) {
                                 $("#username").focus();
                             });
 
-                            function login() {
+
+                            function getSalt() {
+
+                                var username = $("#username").val();
+
+                                $.ajax({
+                                    url: "ajax/get-salt.php",
+                                    type: "POST",
+                                    data: {
+                                        'username': username
+                                    },
+                                    success: function(response) {
+                                        if (response.indexOf("USER_NOT_FOUND") === -1) {
+                                            login(response);
+                                        } else {
+                                            $("#loginTitle").css("color", "red");
+                                            $("#loginTitle").text("Your username or password are incorrect!");
+                                        }
+                                    }
+                                });
+                            }
+
+                            function login(salt) {
+                                $("#loginButton").button('loading');
+
                                 var username = $("#username").val();
                                 var password = $("#password").val();
+
+                                var hashedPassword = CryptoJS.SHA1(password + salt)
 
                                 $.ajax({
                                     url: "ajax/login-submit.php",
                                     type: "POST",
                                     data: {
                                         'username': username,
-                                        'password': password
+                                        'password': hashedPassword.toString()
                                     },
                                     success: function(response) {
                                         if (response === "200 Success") {
@@ -111,6 +145,7 @@ if (isset($_SESSION['firstName'])) {
                                         } else {
                                             $("#loginTitle").css("color", "red");
                                             $("#loginTitle").text(response);
+                                            $("#loginButton").button('reset');
                                         }
                                     }
                                 });

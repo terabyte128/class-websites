@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This deletes an assignment from the links table. Called from
+ * /class-pages/links.php via ajax. 
+ */
+
 $linkId = $_POST['linkId'];
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/check-session.php';

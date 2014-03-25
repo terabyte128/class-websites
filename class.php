@@ -1,4 +1,8 @@
 <?php
+/**
+ * Generates general page things for all class pages
+ */
+
 #assume homepage unless something else is set
 if (isset($_GET['page'])) {
     $page = $_GET['page'];

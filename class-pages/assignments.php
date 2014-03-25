@@ -1,38 +1,51 @@
+<!--
+
+This file pulls in a database query and builds a list of assignments from it
+using PHP within HTML
+
+-->
 
 
 <?php
-$classUID = $classData['uid'];
-require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
+if (!isset($assnQuery)) {
+    $classUID = $classData['uid'];
+    require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
+    $schedule = true;
+}
+
+if (!isset($isTeacherPage)) {
+    $isTeacherPage = false;
+}
 ?>
 
 <div class="card">
     <p class="title">Assignments 
         <?php if ($isTeacherPage) { ?>&nbsp;
-            <button onclick="$('#addAssignment').modal('show');" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button>
+            <button onclick="$('#addAssignment').modal('show');" class="btn btn-success">Add</button>
 
-            <button onclick="deleteAllAssignments();" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> all</button>
+            <button onclick="deleteAllAssignments();" class="btn btn-danger">Delete all</button>
         <?php } ?>
         <button id="toggleExpired" onclick="$('.expired').slideToggle(200);
-                    $(this).text() === 'Show expired' ? $(this).text('Hide expired') : $(this).text('Show expired');
-                    return false;" class="btn btn-default">Show expired</button>
+                $(this).text() === 'Show expired' ? $(this).text('Hide expired') : $(this).text('Show expired');
+                return false;" class="btn btn-default">Show expired</button>
     </p>
 </div>
 
-<?php while ($assignment = $assnQuery->fetch(PDO::FETCH_ASSOC)) { ?>
+<?php foreach ($rows as $assignment) { ?>
 
     <div class="card assignment-card  
 
          <?php
-         if (strtotime($assignment['expire_date']) < time()) {
+         if (strtotime($assignment['expire_date']) < time() - 86400) {
              echo ' expired"';
              echo ' style="display:none; ';
          }
          ?>
          " id="<?= $assignment['uid'] ?>">
         <a name="<?= $assignment['uid'] ?>"></a>
-        <h4><?= $assignment['title'] ?> &mdash; <?= $assignment['value'] ?> pts  
+        <h4><?= $assignment['title'] ?> &mdash; <?= $assignment['value'] ?> pts 
             <?php if ($isTeacherPage) { ?>
-            <button class="btn btn-warning" style="float: right;" onclick="deleteAssignment($(this).closest('div').attr('id'), true)"><span class="glyphicon glyphicon-minus"></span></button>
+                <button class="btn btn-warning" style="float: right;" onclick="deleteAssignment($(this).closest('div').attr('id'), true)">Delete</button>
             <?php } ?>
         </h4>
 
@@ -54,7 +67,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
             <div class="modal-body">
                 <!-- name, value, category, due date -->
                 <form role="form" id="loginForm" onsubmit="addAssignment();
-                    return false;">
+                return false;">
                     <div class="form-group">
                         <label for="assignName">Assignment Name:</label>
                         <input type="text" id="assignName" class="form-control" required>
@@ -84,12 +97,13 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
 
 <script type="text/javascript">
 
-                $(function() {
-                    if (window.location.hash.indexOf("expired") !== -1) {
-                        $("#toggleExpired").click();
-                    }
-                });
+            $(function() {
+                if (window.location.hash.indexOf("expired") !== -1) {
+                    $("#toggleExpired").click();
+                }
+            });
 
+<?php if ($isTeacherPage) { ?>
                 var categories = ["Homework", "Classwork", "Test", "Lab Report"];
 
                 $("#assignCategory").typeahead({
@@ -133,7 +147,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
                         }
                     });
                 }
-
                 function addAssignment() {
                     $("#addAssignment").modal("hide");
 
@@ -158,4 +171,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-assignments-for-class.php";
                         }
                     })
                 }
+
+<?php } ?>
 </script>

@@ -1,0 +1,17 @@
+[
+    {
+        "wolfson": {
+            "first_name": "Sam",
+            "last_name": "Wolfson",
+            "username": "wolfson",
+            "uid": "10",
+            "classes": {
+                "ib-biology-hl": {
+                    "uid": "5",
+                    "name": "IB Biology HL"
+                }
+            }
+        }
+    }
+]
+

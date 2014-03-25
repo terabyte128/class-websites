@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Find the UID of a teacher based on their username (also unique)
+ */
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db-connect.php';
 
 $teacherUsername = $_POST['teacherUsername'];

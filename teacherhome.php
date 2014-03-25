@@ -1,3 +1,7 @@
+<!--
+Teacher's non-specific homepage (not for any classes in particular)
+-->
+
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/get-teacher-from-database.php'; ?>
 
 <!DOCTYPE html>

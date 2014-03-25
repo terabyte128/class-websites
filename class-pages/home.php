@@ -9,6 +9,9 @@
 </div>
 
 <script type="text/javascript">
+    /**
+     * Allow teachers to edit their class description via ajax.
+     */
     $(".editable").editable({
         mode: 'inline',
         pk: '<?php echo $classURL; ?>',

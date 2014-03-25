@@ -2,6 +2,10 @@
 
 <?php
 
+/**
+ * unset session vars and redirect to home
+ */
+
 session_start();
 
 unset($_SESSION['username']);

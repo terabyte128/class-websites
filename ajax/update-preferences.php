@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This updates teacher preferences in the teacher_login table. Called by
+ * /preferences.php via ajax.
+ */
+
 require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/check-session.php";
 
 # get a database entry and the new value of it

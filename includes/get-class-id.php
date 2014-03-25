@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * returns a class's ID based on the class_url and the teacher_id
+ */
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db-connect.php';
 
 $classURL = $_POST['classURL'];

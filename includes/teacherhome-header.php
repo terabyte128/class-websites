@@ -1,5 +1,9 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/get-classes-from-database.php'; ?>
 
+<!--
+The header for a teacher's home page, shows classes, preferences, home
+-->
+
 <div>
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This deletes an assignment from the assignments table. Called from
+ * /class-pages/assignments.php via ajax. 
+ */
+
 $assignmentId = $_POST['assignmentId'];
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/check-session.php';

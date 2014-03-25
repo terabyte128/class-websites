@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * get teacher information from teacher_login table based on the username passed
+ * via GET
+ */
+
 # make sure they're logged in
 session_start();
 # get the teacher username
