@@ -21,13 +21,16 @@ allows students to create schedules consisting of multiple classes
                             <input type="text" class="form-control" id="teacherSearch" onkeyup="search();">
                         </form>
                         <br />
+                        <label>Click on classes you'd like to include in your schedule:</label>
                         <ul id="teacherList">
 
                         </ul>
                         <form onsubmit="return false;">
                             <label for="url">Copy the URL:</label>
-                            <input type="text" id="url" disabled class="form-control">
+                            <input onclick="this.select();" type="text" id="url" class="form-control">
                         </form>
+                        <br />
+                        <label>Paste it into your address bar to access your schedule.</label>
                         <br />
                     </div>
 
