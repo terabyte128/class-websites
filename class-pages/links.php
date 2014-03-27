@@ -26,7 +26,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
         <a name="<?= $link['uid'] ?>"></a>
         <h4><?= $link['title'] ?> <a target="_blank" href="<?= $link['url'] ?>"><span class="glyphicon glyphicon-link"></span></a>
             <?php if ($isTeacherPage) { ?>
-                <button class="btn btn-warning" style="float: right;<?php if (empty($link['description'])) echo 'margin-top: -6px;' ?>" onclick="deleteLink($(this).closest('div').attr('id'), true)">Delete</button>
+                <button class="btn btn-warning btn-delete-link" style="float: right;<?php if (empty($link['description'])) echo 'margin-top: -6px;' ?>" >Delete</button>
             <?php } ?>
         </h4>
 
@@ -92,6 +92,13 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
                     })
                 }
                 
+                $(".btn-delete-link").popover({
+					title: "Are you sure?",
+					content: '<button class="btn btn-danger" onclick="deleteLink($(this).closest(\'.link-card\').attr(\'id\'));">Yes</button><span> </span><button class="btn btn-default" onclick="$(\'.btn\').popover(\'hide\');">No</button>',
+					placement: 'left',
+					html: true
+				});
+                
                 function deleteAllLinks() {
                     if (!confirm("Are you sure you want to delete all links?")) {
                         return;
@@ -102,12 +109,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
                     loadPageWithMessage('./links', 'Links deleted successfully.', 'success');
                 }
 
-                function deleteLink(id, needsConfirm) {
-                    if (needsConfirm) {
-                        if (!confirm("Are you sure you want to delete this link?")) {
-                            return;
-                        }
-                    }
+                function deleteLink(id) {
                     $.ajax({
                         url: '/ajax/delete-link.php',
                         type: "POST",
@@ -115,13 +117,11 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
                             'linkId': id
                         },
                         success: function(response) {
-                            if (needsConfirm) {
-                                if (response.indexOf("200") === -1) {
-                                    showMessage(response, 'danger');
-                                } else {
-                                    loadPageWithMessage('./links', 'Link deleted successfully.', 'success');
-                                }
-                            }
+                            if (response.indexOf("200") === -1) {
+                                showMessage(response, 'danger');
+                        	} else {
+                        		loadPageWithMessage('./links', 'Link deleted successfully.', 'success');
+							}
                         }
                     });
                 }

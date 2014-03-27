@@ -45,7 +45,7 @@ if (!isset($isTeacherPage)) {
         <a name="<?= $assignment['uid'] ?>"></a>
         <h4><?= $assignment['title'] ?> &mdash; <?= $assignment['value'] ?> pts 
             <?php if ($isTeacherPage) { ?>
-                <button class="btn btn-warning" style="float: right;" onclick="deleteAssignment($(this).closest('div').attr('id'), true)">Delete</button>
+                <button class="btn btn-warning btn-delete-assignment" style="float: right;">Delete</button>
             <?php } ?>
         </h4>
 
@@ -114,6 +114,13 @@ if (!isset($isTeacherPage)) {
                     format: "yyyy-mm-dd"
                 });
 
+				$(".btn-delete-assignment").popover({
+					title: "Are you sure?",
+					content: '<button class="btn btn-danger" onclick="deleteAssignment($(this).closest(\'.assignment-card\').attr(\'id\'));">Yes</button><span> </span><button class="btn btn-default" onclick="$(\'.btn\').popover(\'hide\');">No</button>',
+					placement: 'left',
+					html: true
+				});
+
                 function deleteAllAssignments() {
                     if (!confirm("Are you sure you want to delete all assignments?")) {
                         return;
@@ -124,12 +131,7 @@ if (!isset($isTeacherPage)) {
                     loadPageWithMessage('./assignments', 'Assignments deleted successfully.', 'success');
                 }
 
-                function deleteAssignment(id, needsConfirm) {
-                    if (needsConfirm) {
-                        if (!confirm("Are you sure you want to delete this assignment?")) {
-                            return;
-                        }
-                    }
+                function deleteAssignment(id) {
                     $.ajax({
                         url: '/ajax/delete-assignment.php',
                         type: "POST",
@@ -137,12 +139,10 @@ if (!isset($isTeacherPage)) {
                             'assignmentId': id
                         },
                         success: function(response) {
-                            if (needsConfirm) {
-                                if (response.indexOf("200") === -1) {
-                                    showMessage(response, 'danger');
-                                } else {
-                                    loadPageWithMessage('./assignments', 'Assignment deleted successfully.', 'success');
-                                }
+                            if (response.indexOf("200") === -1) {
+                                showMessage(response, 'danger');
+                            } else {
+                                loadPageWithMessage('./assignments', 'Assignment deleted successfully.', 'success');
                             }
                         }
                     });
