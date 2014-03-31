@@ -15,7 +15,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
         <?php if ($isTeacherPage) { ?>&nbsp;
             <button onclick="$('#addLink').modal('show');" class="btn btn-success">Add</button>
 
-            <button onclick="deleteAllLinks();" class="btn btn-danger">Delete all</button>
+            <button id="deleteAllButton" class="btn btn-danger">Delete all</button>
         <?php } ?>
     </p>
 </div>
@@ -99,14 +99,28 @@ require $_SERVER['DOCUMENT_ROOT'] . "/includes/get-links-for-class.php";
 					html: true
 				});
                 
+                $("#deleteAllButton").popover({
+					title: "Are you sure?",
+					content: '<button class="btn btn-danger" onclick="deleteAllLinks();">Yes</button><span> </span><button class="btn btn-default" onclick="$(\'.btn\').popover(\'hide\');">No</button>',
+					placement: 'left',
+					html: true
+				});
+
                 function deleteAllLinks() {
-                    if (!confirm("Are you sure you want to delete all links?")) {
-                        return;
-                    }
-                    $(".link-card").each(function() {
-                        deleteLink($(this).attr("id"), false);
+                   $.ajax({
+                        url: '/ajax/delete-all-links-for-class.php',
+                        type: "POST",
+                        data: {
+                            'classId': "<?= $classUID ?>"
+                        },
+                        success: function(response) {
+                            if (response.indexOf("200") === -1) {
+                                showMessage(response, 'danger');
+                            } else {
+                                loadPageWithMessage('./links', 'Links deleted successfully.', 'success');
+                            }
+                        }
                     });
-                    loadPageWithMessage('./links', 'Links deleted successfully.', 'success');
                 }
 
                 function deleteLink(id) {

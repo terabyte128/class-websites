@@ -23,7 +23,7 @@ if (!isset($isTeacherPage)) {
         <?php if ($isTeacherPage) { ?>&nbsp;
             <button onclick="$('#addAssignment').modal('show');" class="btn btn-success">Add</button>
 
-            <button onclick="deleteAllAssignments();" class="btn btn-danger">Delete all</button>
+            <button id="deleteAllButton" class="btn btn-danger">Delete all</button>
         <?php } ?>
         <button id="toggleExpired" onclick="$('.expired').slideToggle(200);
                 $(this).text() === 'Show expired' ? $(this).text('Hide expired') : $(this).text('Show expired');
@@ -120,15 +120,29 @@ if (!isset($isTeacherPage)) {
 					placement: 'left',
 					html: true
 				});
+				
+				$("#deleteAllButton").popover({
+					title: "Are you sure?",
+					content: '<button class="btn btn-danger" onclick="deleteAllAssignments();">Yes</button><span> </span><button class="btn btn-default" onclick="$(\'.btn\').popover(\'hide\');">No</button>',
+					placement: 'left',
+					html: true
+				});
 
                 function deleteAllAssignments() {
-                    if (!confirm("Are you sure you want to delete all assignments?")) {
-                        return;
-                    }
-                    $(".assignment-card").each(function() {
-                        deleteAssignment($(this).attr("id"), false);
+                   $.ajax({
+                        url: '/ajax/delete-all-assignments-for-class.php',
+                        type: "POST",
+                        data: {
+                            'classId': "<?= $classUID ?>"
+                        },
+                        success: function(response) {
+                            if (response.indexOf("200") === -1) {
+                                showMessage(response, 'danger');
+                            } else {
+                                loadPageWithMessage('./assignments', 'Assignments deleted successfully.', 'success');
+                            }
+                        }
                     });
-                    loadPageWithMessage('./assignments', 'Assignments deleted successfully.', 'success');
                 }
 
                 function deleteAssignment(id) {

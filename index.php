@@ -16,7 +16,7 @@ if (isset($_SESSION['firstName'])) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
         <title>Transfusion - Home</title>
-        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+        <script src="/js/sha1.js"></script>
 
     </head>
     <body>

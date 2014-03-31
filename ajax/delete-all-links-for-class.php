@@ -1,19 +1,18 @@
 <?php
 
 /**
- * This deletes an assignment from the links table. Called from
- * /class-pages/links.php via ajax. 
+ * This deletes an assignment from the assignments table. Called from
+ * /class-pages/assignments.php via ajax. 
  */
-
-$linkId = $_POST['linkId'];
+$classId = $_POST['classId'];
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/check-session.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db-connect.php';
 
-# check that it's the teacher's link to delete
+# check that it's the teacher's assignment to delete
 try {
-    $query = $db->prepare("SELECT `teacher_id` FROM `link` WHERE `uid`=?");
-    $query->execute(array($linkId));
+    $query = $db->prepare("SELECT `teacher_id` FROM `class` WHERE `uid`=?");
+    $query->execute(array($classId));
     $response = $query->fetch(PDO::FETCH_ASSOC);
     if ($response['teacher_id'] !== $_SESSION['teacherID']) {
         die("You may only delete links from your own classes.");
@@ -23,8 +22,8 @@ try {
 }
 
 try {
-    $query = $db->prepare("DELETE FROM `link` WHERE `uid`=?");
-    $query->execute(array($linkId));
+    $query = $db->prepare("DELETE FROM `link` WHERE `class_id`=?");
+    $query->execute(array($classId));
     echo 200;
 } catch (PDOException $e) {
     die("Unable to access database: " . $e->getMessage());
